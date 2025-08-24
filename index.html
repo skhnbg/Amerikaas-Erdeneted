@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amerikaas Erdenet</title>
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f0f2f5, #d9e0ee);
+    color: #1c1c1e;
+}
+header {
+    background-color: rgba(255,255,255,0.95);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+header h1 { margin: 0; font-size: 2rem; }
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px 20px;
+}
+.product-card {
+    background-color: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+.product-card:hover { transform: translateY(-5px); }
+.product-card img { max-width: 100%; border-radius: 8px; }
+.product-card h2 { font-size: 1.2rem; margin: 15px 0 10px; }
+.product-card p { margin: 5px 0; font-size: 1rem; }
+.learn-more-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #0071e3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.learn-more-btn:hover { background-color: #005bb5; }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+}
+.close-btn { float: right; font-size: 1.5rem; cursor: pointer; }
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255,255,255,0.95);
+    font-size: 1rem;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Amerikaas Erdenet</h1>
+</header>
+
+<div class="products">
+    <!-- Apple Products -->
+    <div class="product-card">
+        <img src="images/iphone 17 pro max.jpeg" alt="iPhone 17 Pro Max">
+        <h2>iPhone 17 Pro Max</h2>
+        <p>захиалга авна</p>
+        <button class="learn-more-btn" onclick="openModal('iphone17')">Дэлгэрэнгүй</button>
+    </div>
+    <div class="product-card">
+        <img src="images/macbook.jpeg" alt="MacBook Air M4">
+        <h2>MacBook Air M4</h2>
+        <p>захиалга авна</p>
+        <button class="learn-more-btn" onclick="openModal('macbook')">Дэлгэрэнгүй</button>
+    </div>
+    <div class="product-card">
+        <img src="images/airpods pro 2nd.jpeg" alt="AirPods pro 2nd gen">
+        <h2>AirPods pro 2nd generation</h2>
+        <p>₮839,000</p>
+        <button class="learn-more-btn" onclick="openModal('airpods')">Дэлгэрэнгүй</button>
+    </div>
+    <div class="product-card">
+        <img src="images/imac.jpeg" alt="iMac M4">
+        <h2>iMac M4</h2>
+        <p>захиалга авна</p>
+        <button class="learn-more-btn" onclick="openModal('imac')">Дэлгэрэнгүй</button>
+    </div>
+    <div class="product-card">
+        <img src="images/apple watch.jpeg" alt="Apple Watch Series 9">
+        <h2>Apple Watch</h2>
+        <p>захиалга авна</p>
+        <button class="learn-more-btn" onclick="openModal('watch')">Дэлгэрэнгүй</button>
+    </div>
+
+    <!-- Other Products -->
+    <div class="product-card">
+        <img src="images/cetaphil.jpeg" alt="Cetaphil Lotion 566g">
+        <h2>Cetaphil Чийгшүүлэх Лосьон</h2>
+        <p>566g - ₮68,000</p>
+        <button class="learn-more-btn" onclick="openModal('cetaphil566')">Дэлгэрэнгүй</button>
+    </div>
+    <div class="product-card">
+        <img src="images/cetaphil.jpeg" alt="Cetaphil Lotion 453g">
+        <h2>Cetaphil Чийгшүүлэх Лосьон</h2>
+        <p>453g - ₮58,000</p>
+        <button class="learn-more-btn" onclick="openModal('cetaphil453')">Дэлгэрэнгүй</button>
+    </div>
+    <div class="product-card">
+        <img src="images/cerave.jpg" alt="CeraVe Cream 453g">
+        <h2>CeraVe Чийгшүүлэх Крем</h2>
+        <p>453g - ₮75,000</p>
+        <button class="learn-more-btn" onclick="openModal('cerave')">Дэлгэрэнгүй</button>
+    </div>
+    <div class="product-card">
+        <img src="images/mac.jpeg" alt="MAC 24H Matte Foundation">
+        <h2>MAC 24H Matte Суурь</h2>
+        <p>₮160,000</p>
+        <button class="learn-more-btn" onclick="openModal('mac')">Дэлгэрэнгүй</button>
+    </div>
+    <div class="product-card">
+        <img src="images/dior.jpg" alt="Dior Maximizer #012 Rosewood">
+        <h2>Dior Maximizer #012 Rosewood</h2>
+        <p>₮150,000</p>
+        <button class="learn-more-btn" onclick="openModal('dior-maximizer')">Дэлгэрэнгүй</button>
+    </div>
+    <div class="product-card">
+        <img src="images/lychee.png" alt="Dior Lychee Butter">
+        <h2>Dior Lychee Butter</h2>
+        <p>₮140,000</p>
+        <button class="learn-more-btn" onclick="openModal('dior-lychee')">Дэлгэрэнгүй</button>
+    </div>
+    <div class="product-card">
+        <img src="images/zyrtec.jpeg" alt="Zyrtec 70mg / 50mg">
+        <h2>Zyrtec 50mg</h2>
+        <p>₮105,000</p>
+        <button class="learn-more-btn" onclick="openModal('zyrtec')">Дэлгэрэнгүй</button>
+    </div>
+        <div class="product-card">
+        <img src="images/zyrtec.jpeg" alt="Zyrtec 70mg / 50mg">
+        <h2>Zyrtec 70мг</h2>
+        <p>₮145,000</p>
+        <button class="learn-more-btn" onclick="openModal('zyrtec')">Дэлгэрэнгүй</button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div id="modal-text"></div>
+    </div>
+</div>
+
+<footer>
+    Холбоо барих: +976 95349080
+</footer>
+
+<footer>
+    Хаяг: Эрдэнэт хот 5-5-9 
+</footer>
+
+<script>
+const productInfo = {
+    "iphone17": "iPhone 17 Pro Max нь 9 сарын 19-нд шинээр гарах утсанд захиалга авна.",
+    "macbook": "MacBook Air M4 нь хөнгөн, хурдан, хүчирхэг M4 чиптэй, олон цонхтой ажиллагаанд тохиромжтой.",
+    "airpods": "AirPods Pro 2 нь дуу чимээг бууруулах чадвартай, урт хугацаанд ашиглахад тохиромжтой, Bluetooth холболт хурдан.",
+    "imac": "iMac M4 нь 4.5K Retina дэлгэцтэй, өндөр хүчин чадалтай процессор бүхий бүх нэгтгэлтэй компьютер.",
+    "watch": "Apple Watch Series 9 нь эрүүл мэнд, спортын хянах боломжтой, удаан батерейтай, шинэ watchOS-тай.",
+    "cetaphil566": "Cetaphil Чийгшүүлэх Лосьон 566g нь арьсыг гүн чийгшүүлж, хуурайшлыг багасгана.",
+    "cetaphil453": "Cetaphil Чийгшүүлэх Лосьон 453g нь арьсыг зөөлрүүлж, өдөр бүр хэрэглэхэд тохиромжтой.",
+    "cerave": "CeraVe Чийгшүүлэх Крем 453g нь арьсны хамгаалалтын давхаргыг нөхөж, 24 цагийн чийгшил өгдөг.",
+    "mac": "MAC 24H Matte Суурь нь арьсыг тэгш, матт өнгөтэй харагдуулж, 24 цаг тогтвортой бат бөх байх боломжтой.",
+    "dior-maximizer": "Dior Maximizer #012 Rosewood нь уруулыг өтгөн, чийглэг болгоно.",
+    "dior-lychee": "Dior Lychee Butter нь уруулыг зөөлрүүлж, байгалийн чийгшил өгдөг.",
+    "zyrtec": "Zyrtec нь харшлын шинж тэмдгийг багасгах үйлчилгээтэй эм юм. 70мг болон 50мг-ны тунтай."
+};
+
+function openModal(product) {
+    document.getElementById('modal-text').innerText = productInfo[product];
+    document.getElementById('modal').style.display = 'block';
+}
+
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+}
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById('modal')) {
+        closeModal();
+    }
+}
+</script>
+</body>
+</html>
